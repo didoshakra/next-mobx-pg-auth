@@ -12,7 +12,7 @@ const HeaderLogo = () => {
     <div className="headerLogo">
       <Link href="/" className="headerLogo__icon">
         <Image
-          title="ramag"
+          title="ra-m"
           width={70}
           height={50}
           src="/images/head/sun_man_hands-oval-ra-red.png"
@@ -24,7 +24,7 @@ const HeaderLogo = () => {
         {/* <Image title="raui" width={60} height={50} src="/images/head/Ra-oval.png" alert="logo" /> */}
       </Link>
       <Link href="/" legacyBehavior>
-        <a className="headerLogo__text" title="RAMAG">
+        <a className="headerLogo__text" title="RA-M">
           RAMAG
         </a>
       </Link>
