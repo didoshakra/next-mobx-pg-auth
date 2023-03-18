@@ -1,14 +1,14 @@
 //userMenuIcon.js //
 //Іконка мови окремо (випадаючий список викликається)
 
-import { useState, useContext, useRef, useEffect } from "react"
+import { useState, useContext } from "react"
 import Image from "next/image"
 import { Context } from "../../pages/_app"
 import { ComponentContext } from "../../context/ComponentContext"
 import NotAuthenticated from "../../raui/svg/head/IconUser_border"
 import UserMenuDroop from "./UserMenuDroop"
 
-const userMenuIcon = () => {
+const UserMenuIcon = () => {
   const { global } = useContext(Context) // Store
   const { state, dispatch, profile } = useContext(ComponentContext)
   const { theme } = state
@@ -112,4 +112,4 @@ const userMenuIcon = () => {
   )
 }
 
-export default userMenuIcon
+export default UserMenuIcon

@@ -36,44 +36,44 @@ export default function DrawerDroop({ drawerOpen, setDrawerOpen }) {
     {
       a: "home",
       link: "/begin/home",
-      img: "/icons/png/Book24_24.png",
+      img_url: "/icons/png/Book24_24.png",
     },
     {
       a: "shop",
       link: "/begin/shop",
-      img: "/icons/png/Book24_24.png",
+      img_url: "/icons/png/Book24_24.png",
     },
     {
       a: "about",
       title: "про мене",
       link: "/begin/about",
-      img: "/icons/png/Book24_24.png",
+      img_url: "/icons/png/Book24_24.png",
     },
     {
       a: "blog",
       link: "/begin/blog",
-      img: "/icons/png/Book24_24.png",
+      img_url: "/icons/png/Book24_24.png",
     },
     {
       a: "contact",
       link: "/begin/contacts",
-      img: "/icons/png/Book24_24.png",
+      img_url: "/icons/png/Book24_24.png",
     },
   ]
   const footerList = [
     {
       url: "https://github.com/didoshakra",
-      img: "/icons/social/github-retina.png",
+      img_url: "/icons/social/github-retina.png",
       a: "github",
     },
     {
       url: "https://twitter.com/DidoshakR",
-      img: "/icons/social/twitter-retina.png",
+      img_url: "/icons/social/twitter-retina.png",
       a: "twitter",
     },
     {
       url: "https://www.facebook.com/profile.php?id=100004339204236",
-      img: "/icons/social/facebook-f-64-grow.png",
+      img_url: "/icons/social/facebook-f-64-grow.png",
       a: "facebook",
     },
   ]
@@ -85,13 +85,15 @@ export default function DrawerDroop({ drawerOpen, setDrawerOpen }) {
       {menu.map((item, index) => {
         return (
           <li className="DrawerDroop-item" key={index}>
-            <img src={item.img} alert="logo" top="5" height="20" />
+            {/* <img src={item.img_url} alert="logo" top="5" height="20" /> */}
+            <Image src={item.img_url} alert="logo" top="5" height="20" />
             {item.link ? (
               //   <Link href={`${item.link}`}>
               //     <a title={item.title ? item.title : item.a}>{item.a}</a>
               //   </Link>
               <Link href={`${item.link}`}>
-                <a title={item.title ? item.title : item.a}>{item.a}</a>
+                {item.title ? item.title : item.a}
+                {/* <a title={item.title ? item.title : item.a}>{item.a}</a> */}
               </Link>
             ) : (
               <a title={item.a} href={`${item.url}`}>
