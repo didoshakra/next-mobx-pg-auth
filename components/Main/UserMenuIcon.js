@@ -3,12 +3,14 @@
 
 import { useState, useContext } from "react"
 import Image from "next/image"
+import { useSession, signIn, signOut } from "next-auth/react"
 import { Context } from "../../pages/_app"
 import { ComponentContext } from "../../context/ComponentContext"
 import NotAuthenticated from "../../raui/svg/head/IconUser_border"
 import UserMenuDroop from "./UserMenuDroop"
 
 const UserMenuIcon = () => {
+  const { data: session, status } = useSession()
   const { global } = useContext(Context) // Store
   const { state, dispatch, profile } = useContext(ComponentContext)
   const { theme } = state
@@ -48,10 +50,11 @@ const UserMenuIcon = () => {
         onMouseEnter={toggleHover}
         onMouseLeave={toggleNotHover}
       >
-        {global.isAuth ? (
+        {/* {global.isAuth ? ( */}
+        {status === "authenticated" ? (
           //   <Image className="userMenuIcon__avatar" width={40} height={40} src="/avatar/2.jpg" alt="avatar" />
           <Image
-           style={{borderRadius: "50%"}}
+            style={{ borderRadius: "50%" }}
             className="userMenuIcon__avatar"
             // width={theme.size.headIcon}
             // height={theme.size.headIcon}

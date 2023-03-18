@@ -7,9 +7,9 @@ import { Context } from "../../pages/_app"
 import { ComponentContext } from "../../context/ComponentContext"
 // import { useSession, signIn, signOut } from "next-auth"
 
-const UserMenuDroop = ({ userMenuDroopOpen,setUserMenuDroopOpen }) => {
+const UserMenuDroop = ({ userMenuDroopOpen, setUserMenuDroopOpen }) => {
   const { data: session, status } = useSession()
-    const { global } = useContext(Context) // Store
+  const { global } = useContext(Context) // Store
   const { state } = useContext(ComponentContext)
   const { theme } = state
   //    const [session] = useSession()
@@ -19,42 +19,51 @@ const UserMenuDroop = ({ userMenuDroopOpen,setUserMenuDroopOpen }) => {
     e.preventDefault()
     signIn()
   }
-  const onSignOut = (e) => {
-    console.log("UserMenuDroop.js/onSignOut")
-    // setLangMenuOpen(!langMenuOpen)
-    e.preventDefault()
-    //  signOut()
+
+  const renderSignOut = () => {
+    return (
+      <>
+        <li className="UserMenuDroop__dropdown__item" onClick={() => setUserMenuDroopOpen(false)}>
+          {/* <a className="UserMenuDroop__dropdown__item-p">Registration</a> */}
+          <Link className="UserMenuDroop__dropdown__item-p" href={`/auth/registrations`}>
+            Профіль
+          </Link>
+        </li>
+        <li className="UserMenuDroop__dropdown__item" onClick={() => setUserMenuDroopOpen(false)}>
+          {/* <a className="UserMenuDroop__dropdown__item-p">Registration</a> */}
+          <Link className="UserMenuDroop__dropdown__item-p" href={`/auth/registrations`}>
+            Історія Замовлень
+          </Link>
+        </li>
+        <li onClick={() => setUserMenuDroopOpen(false)} className="UserMenuDroop__dropdown__item">
+          <Link
+            className="UserMenuDroop__dropdown__item-p"
+            onClick={(e) => {
+              e.preventDefault()
+              signOut()
+            }}
+            // href={`/auth/singout`}
+          >
+            Вийти
+          </Link>
+        </li>
+      </>
+    )
   }
-  const renderLogin=()=>{
+  const renderSingIn = () => {
     return (
       <>
         <li onClick={() => setUserMenuDroopOpen(false)} className="UserMenuDroop__dropdown__item">
-          {/* {global.isAuth ? ( */}
-          {status === "authenticated" ? (
-            // <Link className="UserMenuDroop__dropdown__item-p" href={`/auth/singout`}>
-            <Link
-              className="UserMenuDroop__dropdown__item-p"
-              onClick={(e) => {
-                e.preventDefault()
-                signOut()
-              }}
-              href={`/auth/singout`}
-            >
-              Вийти
-            </Link>
-          ) : (
-            // <Link className="UserMenuDroop__dropdown__item-p" href={`auth/singin`}>
-            <Link
-              className="UserMenuDroop__dropdown__item-p"
-              href={`/api/auth/signin`}
-              onClick={(e) => {
-                e.preventDefault()
-                signIn()
-              }}
-            >
-              Sign In/Вхід
-            </Link>
-          )}
+          <Link
+            className="UserMenuDroop__dropdown__item-p"
+            onClick={(e) => {
+              e.preventDefault()
+              signOut()
+            }}
+            href={`/auth/singout`}
+          >
+            Увійти
+          </Link>
         </li>
         <li className="UserMenuDroop__dropdown__item" onClick={() => setUserMenuDroopOpen(false)}>
           {/* <a className="UserMenuDroop__dropdown__item-p">Registration</a> */}

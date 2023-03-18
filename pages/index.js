@@ -3,8 +3,8 @@ import Head from "next/head"
 import Layout from "../components/Main/Layout"
 import Footer from "../components/Main/Footer"
 import MyHomePage from "../components/Shop/MyHomePage"
+import Home from "../components/Home"
 
-// const HomePage = () => {
   export default function HomePage() {
 
   return (
@@ -13,9 +13,9 @@ import MyHomePage from "../components/Shop/MyHomePage"
         {/* <title>{t("header-titleSite")}</title> */}
         <title>RAMAG</title>
       </Head>
-      <MyHomePage />
+      {/* <MyHomePage /> */}
+      <Home />
       <Footer />
     </Layout>
   )
 }
-// export default HomePage
