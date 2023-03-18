@@ -40,15 +40,15 @@ export const authOptions = {
       issuer: process.env.AUTH0_ISSUER,
     }),
   ],
-  theme: {
-    colorScheme: "light",
-  },
-  callbacks: {
-    async jwt({ token }) {
-      token.userRole = "admin"
-      return token
-    },
-  },
+//   theme: {
+//     colorScheme: "light",
+//   },
+//   callbacks: {
+//     async jwt({ token }) {
+//       token.userRole = "admin"
+//       return token
+//     },
+//   },
 }
 
 export default NextAuth(authOptions)
