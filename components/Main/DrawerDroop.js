@@ -86,7 +86,7 @@ export default function DrawerDroop({ drawerOpen, setDrawerOpen }) {
         return (
           <li className="DrawerDroop-item" key={index}>
             {/* <img src={item.img_url} alert="logo" top="5" height="20" /> */}
-            <Image src={item.img_url} alert="logo" top="5" width="20" height="20" />
+            <Image src={item.img_url} alt="logo" top="5" width="20" height="20" />
             {item.link ? (
               //   <Link href={`${item.link}`}>
               //     <a title={item.title ? item.title : item.a}>{item.a}</a>

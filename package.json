@@ -1,5 +1,5 @@
 {
-  "name": "next-mag-pg-bootstrap",
+  "name": "next-mobx-pg-auth",
   "version": "0.1.0",
   "private": true,
   "scripts": {

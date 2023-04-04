@@ -5,7 +5,7 @@ import { useContext, useState } from "react"
 import { ComponentContext } from "../../context/ComponentContext"
 import IconList from "../../raui/svg/head/IconListP_thin" //рисочки з крапочками (тонкі)
 
-const MobileMenuIcon = (props) => {
+const MobileMenuIcon = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const { state } = useContext(ComponentContext)
   const { theme } = state
   const [iconHover, setIconHover] = useState(false) //Для тоого щоб працював hover
@@ -26,7 +26,7 @@ const MobileMenuIcon = (props) => {
       {/* іконка мобільного меню */}
       <p
         className="mobileMenuIcon__iconWraper"
-        onClick={() => props.mobileMenuToggle(props.mobileMenuOpen ? false : true)}
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleNotHover}
         title="RAMAG"

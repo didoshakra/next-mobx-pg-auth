@@ -1,6 +1,7 @@
 //Header.js// Викликає всі меню/Саме меню
 //20200416-добавляю 2-а діва (для верхньої стрічки-HeaderTape і нажнього випадаючого на весь екран MobileMenu)
 import { useState, useContext, useEffect } from "react"
+import { useSession, signIn, signOut } from "next-auth/react"
 import { ComponentContext } from "../../context/ComponentContext"
 import DrawerSwitche from "./DrawerSwitcher"
 import HeaderLogo from "./HeaderLogo"
@@ -14,6 +15,7 @@ var lastScrollTop = 0
 var scrolUP = false
 
 const Header = () => {
+  const { data: session, status } = useSession()
   const { state } = useContext(ComponentContext)
   const { theme } = state
   const heightHeaderTape = "24px" //Висота header0
@@ -111,19 +113,53 @@ const Header = () => {
         </div>
         <div className="header-conteiner__menu-right">
           <div className="header-conteiner__menu-center">
+            {status === "authenticated" ? (
+              <>
+                <p>Hi {session?.user?.name}</p>
+                <button
+                  style={{
+                    color: "green",
+                    backgroundColor: "yellow",
+                    border: "solid green",
+                    borderRadius: " 5px",
+                    width: "60px",
+                    justifyContent: "center",
+                  }}
+                  onClick={() => signOut()}
+                >
+                  SingOut
+                </button>
+              </>
+            ) : (
+              <button
+                style={{
+                  color: "red",
+                  backgroundColor: "yellow",
+                  border: "solid green",
+                  borderRadius: " 5px",
+                  width: "60px",
+                  justifyContent: "center",
+                }}
+                type="button"
+                onClick={() => signIn()}
+              >
+                SingIn
+              </button>
+            )}
+
             {/* Середній блок меню */}
             <HeaderMenu menu={menu} />
           </div>
           <div className="header-conteiner__menu-end">
             {/* іконка мобільного меню/faList/ */}
-            <MobileMenuIcon mobileMenuOpen={mobileMenuOpen} mobileMenuToggle={mobileMenuToggle} />
+            <MobileMenuIcon mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
             {/* Налаштування(Теми,Мови)*/}
             <HeaderSeting />
           </div>
         </div>
       </div>
       {/* Список мобильного меню */}
-      <MobileMenuDroop menu={menu} mobileMenuOpen={mobileMenuOpen} mobileMenuToggle={mobileMenuToggle} />
+      <MobileMenuDroop menu={menu} mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       {/* ============================================================================================= */}
       <style jsx>{`
         .header-section {
@@ -155,12 +191,12 @@ const Header = () => {
 
         .header-conteiner__menu-center {
           padding: 0 5px;
-        //   max-width: calc(100% - 350px);
+          //   max-width: calc(100% - 350px);
           display: flex;
           justify-content: space-end;
           align-items: center;
         }
-        
+
         .header-conteiner__menu-end {
           flex-shrink: 0;
           width: 50px;

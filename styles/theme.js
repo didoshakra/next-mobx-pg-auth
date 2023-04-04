@@ -101,6 +101,13 @@ export const themeLith = {
     drawerDropdownMenuItem: "#82AE46", // Стрілка верхньогоменю
     drawerDropdownMenuItemHover: "#f64532", // Стрілка верхньогоменю
 
+    //-- dropdownMenu --------------------------------------------
+    menuDroopText: "#6B8E23", //Текст випадаючого меню
+    menuDroopTextHover: "#ffff", //Текст випадаючого меню
+    menuDroopBackground: "#E7F4E0", // "#F4F4EB",
+    menuDroopBackgroundHover: "#6B8E23", // "#F4F4EB",
+    menuDroopHr: "#6B8E23", // Лінії розмежування
+
     //-- docHead --------------------------------------------
     docHeadTitle: "#6B8E23", //1 "#fff",
     docHeadLable: "#f64532", //"#6B8E23", //1"#fff",
